@@ -1,18 +1,15 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { ExercisesController } from '../exercise.controller';
+import { ExerciseService } from '../../services/exercise.service';
 
 describe('TestController', () => {
-  let controller: ExercisesController;
+  let service: ExerciseService;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [ExercisesController],
-    }).compile();
-
-    controller = module.get<ExercisesController>(ExercisesController);
+  beforeEach(() => {
+    service = new ExerciseService();
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('root', () => {
+    it('should return "Hello World!"', () => {
+      expect(service.getTask1('I love this white rabbit')).toBe('I evol siht etihw tibbar');
+    });
   });
 });
